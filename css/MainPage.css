@@ -1,31 +1,35 @@
-body {
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     font-family: 'Roboto';font-size: 22px;
-
 
 }
 
 
 .Home{
     background-image: url("../images/DeskPlaceholder.jpg");
-
-    position: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+
+    height: 100%
 }
 
-.aboutme{
-    postion: absolute;
-    top: 0; right: 0; bottom: 0; left: 0;
+.AboutMe{
+    height: 100%
 }
 
+.Skills{
+    height: 100%
+}
 .homeTitle{
     text-align: center;
 }
 
 .textOne{
-
+    text-align: center;
 }
 
 /*Circle image should float left of the text in the div*/
