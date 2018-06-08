@@ -1,0 +1,25 @@
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+div{
+    height: 100%;
+}
+
+#Home{
+    background-image: url("../images/DeskPlaceholder.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title{
+    text-align: center;
+}
+
+#Banner1, #Banner2, #JavaBanner, #WebBanner, #Home, #AboutMe{
+    border: dotted;
+}
