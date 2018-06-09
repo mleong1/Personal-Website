@@ -18,12 +18,15 @@
 
     <!-- My stylesheets go here-->
     <link rel="stylesheet" type="text/css" href="css/MyPage.css">
+    <!-- Font Awesome stylesheet-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
 
-<div class="container infoBlock">
-    <div class="row" id="row1">
+<div class="container-fluid infoBlock">
+    <!--Containers and rows bring in bootstraps grid system-->
+    <div class="row infoRow">
 
         <div class="col-md-2" id="Banner1">
             <h1>I am</h1>
@@ -37,15 +40,18 @@
     </div>
 </div>
 
-<div class="container infoBlock">
-    <div class="row" id="row2">
+<div class="container-fluid infoBlock">
+    <div class="row infoRow">
 
         <div class="col-md-2" id="Banner2">
             <h1>About Me</h1>
         </div>
 
         <div class="container-fluid col-md-10" id="AboutMe">
-            <p class="description">I started seriously programming in college when I found out about a computer science course from a friend.
+            <!--Image needs to circle but this bootstrap 4-->
+
+            <p class="description" id="AboutMeDesc"><img src="images/matt.jpg" class="img-fluid float-left" alt="Matt" width="240" height="240">
+                I started seriously programming in college when I found out about a computer science course from a friend.
                 Ever since I've liked the challenge of the inherent puzzle solving of programming. I also like the feeling of a successful
                 run of something that I wrote myself. I am most interested in the way technology shapes social interaction and in
                 some cases adds new social interaction. In my free time I run, I play guitar (still learning), and I try to play
@@ -54,8 +60,8 @@
     </div>
 </div>
 
-<div class="container infoBlock">
-    <div class="row" id="row3">
+<div class="container-fluid infoBlock">
+    <div class="row infoRow">
 
         <div class="col-md-6" id="JavaBanner">
             <h1 class="title">Java</h1>
@@ -65,15 +71,16 @@
 
         <div class="col-md-6" id="WebBanner">
             <h1 class="title">Web</h1>
-            <p class="description">1 year of experience with HTML, CSS, and JavaScript.</p>
+            <p class="description">1 year of experience with HTML, CSS, and JavaScript. Experienced with Bootstrap and
+            JQuery.</p>
         </div>
     </div>
 </div>
 
-<div class="container infoBlock">
-    <div class="row" id="row4">
+<div class="container-fluid infoBlock">
+    <div class="row infoRow">
 
-        <div class="col-md-12">
+        <div class="col-md-12" id="ProjectBanner">
             <h1 class="title">Projects</h1>
             <p class="description">Current projects will be posted soon here, but for now check out my
                 <a href="https://gitlab.com/mleong">GitLab</a>.</p>
@@ -81,5 +88,15 @@
     </div>
 
 </div>
+
+<div class="container-fluid footer">
+    <div class="row">
+
+        <div class="col-md-12">
+            <p>This is my footer</p>
+        </div>
+    </div>
+</div>
+<!--End of body-->
 </body>
 </html>

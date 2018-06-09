@@ -5,7 +5,7 @@ html, body{
 }
 
 
-div{
+.infoBlock, .infoRow{
     height: 100%;
 }
 
@@ -20,6 +20,34 @@ div{
     text-align: center;
 }
 
-#Banner1, #Banner2, #JavaBanner, #WebBanner, #Home, #AboutMe{
+#Banner1, #Banner2, #JavaBanner, #WebBanner, #ProjectBanner, #Home, #AboutMe{
     border: dotted;
+}
+
+#AboutMeDesc{
+    float: right;
+}
+
+#Banner1{
+    background-color: orange;
+}
+
+.description{
+    margin: auto;
+    width: 60%;
+}
+#AboutMe{
+    margin: auto;
+    width: 60%;
+}
+
+
+
+.footer{
+    bottom: 0px;
+    width: 100%;
+    margin: 0;
+    background-color: lightgrey;
+    border: dotted;
+    height: 100px;
 }
