@@ -34,8 +34,9 @@ html, body{
 
 .description{
     margin: auto;
-    width: 60%;
 }
+
+
 #AboutMe{
     margin: auto;
     width: 60%;
@@ -46,8 +47,11 @@ html, body{
 .footer{
     bottom: 0px;
     width: 100%;
+
     margin: 0;
     background-color: lightgrey;
     border: dotted;
     height: 100px;
+    font-size: 60px;
 }
+
