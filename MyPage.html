@@ -24,15 +24,12 @@
 
 <body>
 
+<!--Lets try using pastel blues and reds -->
 <div class="container-fluid infoBlock">
     <!--Containers and rows bring in bootstraps grid system-->
     <div class="row infoRow">
 
-        <div class="col-md-2" id="Banner1">
-            <h1>I am</h1>
-        </div>
-
-        <div class="container-fluid col-md-10" id="Home">
+        <div class="container-fluid" id="Home">
             <h1 class="title">Matthew Leong</h1>
             <p class="description">a programmer from Brooklyn, New York, on a consistent programming grind. A learner constantly curious
                 about how and why things work.</p>
@@ -43,6 +40,7 @@
 <div class="container-fluid infoBlock">
     <div class="row infoRow">
 
+        <!--Stacked nav goes here lose the banners-->
         <div class="col-md-2" id="Banner2">
             <h1>About Me</h1>
         </div>
@@ -50,7 +48,7 @@
         <div class="container-fluid col-md-10" id="AboutMe">
             <!--Image needs to circle but this bootstrap 4-->
 
-            <p class="description" id="AboutMeDesc"><img src="images/matt.jpg" class="img-fluid float-left" alt="Matt" width="240" height="240">
+            <p class="description" id="AboutMeDesc"><img src="images/matt.jpg" class="img-fluid hidden-sm float-left" alt="Matt" width="240" height="240">
                 I started seriously programming in college when I found out about a computer science course from a friend.
                 Ever since I've liked the challenge of the inherent puzzle solving of programming. I also like the feeling of a successful
                 run of something that I wrote myself. I am most interested in the way technology shapes social interaction and in
@@ -63,16 +61,21 @@
 <div class="container-fluid infoBlock">
     <div class="row infoRow">
 
-        <div class="col-md-6" id="JavaBanner">
+        <div class="col-md-4" id="JavaSec">
             <h1 class="title">Java</h1>
             <p class="description">5 years of object oriented programming experience. Strong handle of data structures and algorithms.
             </p>
         </div>
 
-        <div class="col-md-6" id="WebBanner">
+        <div class="col-md-4" id="WebSec">
             <h1 class="title">Web</h1>
             <p class="description">1 year of experience with HTML, CSS, and JavaScript. Experienced with Bootstrap and
             JQuery.</p>
+        </div>
+
+        <div class="col-md-4" id="DatabaseSec">
+            <h1 class="title">Database</h1>
+            <p class="description">2 years of database experience particularly in MySQL.</p>
         </div>
     </div>
 </div>
@@ -92,9 +95,15 @@
 <div class="container-fluid footer">
     <div class="row">
 
-        <div class="col-md-12 footerContent">
-            <i class="fa fa-linkedin"></i>
+        <div class="col-md-12" id="footerContent">
+            <a href="https://www.linkedin.com/in/matthew-leong-81773513a/" style="color: inherit">
+                <i class="fa fa-linkedin"></i>
+            </a>
+
+            <a href="https://gitlab.com/mleong" style="color: inherit">
             <i class="fa fa-gitlab"></i>
+            </a>
+
             <i class="fa fa-envelope"></i>
         </div>
     </div>
