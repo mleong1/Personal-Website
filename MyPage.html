@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
+<body data-spy="scroll" data-target="#scrollSpy" data-offset="1">
 
 <!--Lets try using pastel blues and reds -->
 <div class="container-fluid infoBlock">
@@ -41,11 +41,23 @@
     <div class="row infoRow">
 
         <!--Stacked nav goes here lose the banners-->
-        <div class="col-md-2" id="Banner2">
-            <h1>About Me</h1>
-        </div>
+        <nav class="col-md-3" id="scrollSpy">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#AboutMe">About Me</a>
+                </li>
 
-        <div class="container-fluid col-md-10" id="AboutMe">
+                <li class="nav-item">
+                    <a class="nav-link" href="#JavaSec">Skills</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#ProjectSec">Projects</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="container-fluid col-md-9" id="AboutMe">
             <!--Image needs to circle but this bootstrap 4-->
 
             <p class="description" id="AboutMeDesc"><img src="images/matt.jpg" class="img-fluid hidden-sm float-left" alt="Matt" width="240" height="240">
@@ -83,7 +95,7 @@
 <div class="container-fluid infoBlock">
     <div class="row infoRow">
 
-        <div class="col-md-12" id="ProjectBanner">
+        <div class="col-md-12" id="ProjectSec">
             <h1 class="title">Projects</h1>
             <p class="description">Current projects will be posted soon here, but for now check out my
                 <a href="https://gitlab.com/mleong">GitLab</a>.</p>

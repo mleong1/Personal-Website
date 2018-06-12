@@ -1,4 +1,5 @@
 html, body{
+    position: relative;
     height: 100%;
     margin: 0;
     padding: 0;
@@ -20,7 +21,7 @@ html, body{
     text-align: center;
 }
 
-#Banner2, #JavaSec, #WebSec, #DatabaseSec, #ProjectBanner, #Home, #AboutMe{
+#Banner2, #JavaSec, #WebSec, #DatabaseSec, #ProjectSec, #Home, #AboutMe{
     border: dotted;
 }
 
