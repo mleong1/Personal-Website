@@ -5,7 +5,6 @@ html, body{
     padding: 0;
 }
 
-
 .infoBlock, .infoRow{
     height: 100%;
 }
@@ -21,7 +20,7 @@ html, body{
     text-align: center;
 }
 
-#Banner2, #JavaSec, #WebSec, #DatabaseSec, #ProjectSec, #Home, #AboutMe{
+#Banner2, #JavaSec, #WebSec, #DatabaseSec, #ProjectSec, #Home, #AboutMe, #scrollSpy{
     border: dotted;
 }
 
@@ -36,6 +35,7 @@ html, body{
 #AboutMe{
     margin: auto;
     width: 60%;
+
 }
 
 #footerContent{
