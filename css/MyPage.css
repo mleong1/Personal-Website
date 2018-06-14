@@ -18,6 +18,7 @@ html, body{
 }
 
 .title{
+    color: #E85A4F;
     font-family: 'Song Myung', serif;
     text-align: center;
     position: relative;
@@ -50,12 +51,21 @@ ul.nav-pills{
     position: -webkit-sticky;
     position: sticky;
     top: 30%;
-    border: dotted;
 }
 
+.nav-item {
+    font-family: 'Song Myung', serif;
+}
+
+a.nav-link{
+    color: #E85A4F;
+}
+
+a.nav-link:active{
+    color: #0b2e13;
+}
 
 .infoBlock, .infoRow{
-
     height: 100%;
 }
 
@@ -67,29 +77,22 @@ ul.nav-pills{
     height: 33.3%;
 }
 
-
-#scrollSpy{
-    border: dotted;
+#content{
+    background-color: #EAE7DC;
 }
 
-
-#AboutMe{
-    margin: auto;
-    width: 100%;
-
-}
-
+/*Everything pertaining to the footer*/
 #footerContent{
+
     text-align: center;
     letter-spacing: 10px;
 }
-
 
 .footer{
     width: 100%;
     bottom: 0;
     margin: 0;
-    background-color: lightgrey;
+    background-color: #8E8D8A;
     height: 80px;
     font-size: 45px;
 }
