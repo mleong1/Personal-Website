@@ -5,10 +5,6 @@ html, body{
     padding: 0;
 }
 
-.infoBlock, .infoRow{
-    height: 100%;
-}
-
 #Home{
     background-image: url("../images/DeskPlaceholder.jpg");
     background-position: center;
@@ -16,16 +12,32 @@ html, body{
     background-size: cover;
 }
 
+ul.nav-pills{
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+    border: dotted;
+}
+
+
+.infoBlock, .infoRow{
+
+    height: 100%;
+}
+
+#content{
+    height: 300%;
+}
+
+.innerInfoBlock{
+    height: 33.3%;
+}
 .title{
     text-align: center;
 }
 
-#Banner2, #JavaSec, #WebSec, #DatabaseSec, #ProjectSec, #Home, #AboutMe, #scrollSpy{
+#scrollSpy{
     border: dotted;
-}
-
-#AboutMeDesc{
-    float: right;
 }
 
 .description{
@@ -34,7 +46,7 @@ html, body{
 
 #AboutMe{
     margin: auto;
-    width: 60%;
+    width: 100%;
 
 }
 
@@ -43,15 +55,16 @@ html, body{
     letter-spacing: 10px;
 }
 
-.footer{
-    bottom: 0px;
-    width: 100%;
 
+.footer{
+    width: 100%;
+    bottom: 0;
     margin: 0;
     background-color: lightgrey;
-    height: 100px;
-    font-size: 60px;
+    height: 80px;
+    font-size: 45px;
 }
+
 
 
 a:link{

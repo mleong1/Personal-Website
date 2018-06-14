@@ -34,14 +34,15 @@
             <p class="description">a programmer from Brooklyn, New York, on a consistent programming grind. A learner constantly curious
                 about how and why things work.</p>
         </div>
+
     </div>
 </div>
 
-<div class="container-fluid infoBlock">
+<div class="container-fluid infoBlock" id="content">
     <div class="row infoRow">
 
         <!--Stacked nav goes here lose the banners-->
-        <nav class="col-md-3" id="scrollSpy">
+        <nav class="col-md-2 col-3" id="scrollSpy">
             <ul class="nav nav-pills flex-column">
                 <li class="nav-item">
                     <a class="nav-link active" href="#AboutMe">About Me</a>
@@ -57,9 +58,9 @@
             </ul>
         </nav>
 
-        <div class="container-fluid col-md-9">
+        <div class="col-md-10 col-9">
             <!--Image needs to circle but this bootstrap 4-->
-            <div class="infoBlock" id="AboutMe">
+            <div class="innerInfoBlock" id="AboutMe">
                 <p class="description" id="AboutMeDesc"><img src="images/matt.jpg" class="img-fluid hidden-sm float-left" alt="Matt" width="240" height="240">
                     I started seriously programming in college when I found out about a computer science course from a friend.
                     Ever since I've liked the challenge of the inherent puzzle solving of programming. I also like the feeling of a successful
@@ -68,8 +69,7 @@
                     Melee with my friends when I can.</p>
             </div>
 
-
-            <div class="infoBlock" id="Skills">
+            <div class="innerInfoBlock" id="Skills">
                 <div class="row infoRow">
                     <div class="col-md-4" id="JavaSec">
                         <h1 class="title">Java</h1>
@@ -90,33 +90,35 @@
                 </div>
             </div>
 
-            <div class="infoBlock" id="ProjectSec">
+            <div class="innerInfoBlock" id="ProjectSec">
                 <h1 class="title">Projects</h1>
                 <p class="description">Current projects will be posted soon here, but for now check out my
                     <a href="https://gitlab.com/mleong">GitLab</a>.</p>
             </div>
         </div>
+
     </div>
 </div>
-
-
 
 <div class="container-fluid footer">
     <div class="row">
 
-        <div class="col-md-12" id="footerContent">
+        <div class="container-fluid" id="footerContent">
             <a href="https://www.linkedin.com/in/matthew-leong-81773513a/" style="color: inherit">
                 <i class="fa fa-linkedin"></i>
             </a>
 
             <a href="https://gitlab.com/mleong" style="color: inherit">
-            <i class="fa fa-gitlab"></i>
+                <i class="fa fa-gitlab"></i>
             </a>
 
             <i class="fa fa-envelope"></i>
         </div>
+
     </div>
 </div>
+
+
 <!--End of body-->
 </body>
 </html>
