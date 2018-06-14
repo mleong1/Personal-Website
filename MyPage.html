@@ -20,6 +20,8 @@
     <link rel="stylesheet" type="text/css" href="css/MyPage.css">
     <!-- Font Awesome stylesheet-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Google Fonts stylesheets-->
+    <link href="https://fonts.googleapis.com/css?family=Lato|Song+Myung" rel="stylesheet">
 </head>
 
 <body data-spy="scroll" data-target="#scrollSpy" data-offset="1">
@@ -30,9 +32,9 @@
     <div class="row infoRow">
 
         <div class="container-fluid" id="Home">
-            <h1 class="title">Matthew Leong</h1>
-            <p class="description">a programmer from Brooklyn, New York, on a consistent programming grind. A learner constantly curious
-                about how and why things work.</p>
+            <h1 class="homeTitle">Matthew Leong</h1>
+            <p class="description" id="HomeDesc">a programmer from Brooklyn, New York, on a consistent programming grind.<br>
+                A learner constantly curious about how and why things work.</p>
         </div>
 
     </div>
@@ -61,6 +63,8 @@
         <div class="col-md-10 col-9">
             <!--Image needs to circle but this bootstrap 4-->
             <div class="innerInfoBlock" id="AboutMe">
+                <!--Lengthy descriptions not resizing right might be fixed with vh and vw -->
+                <h1 class="title">About Me</h1>
                 <p class="description" id="AboutMeDesc"><img src="images/matt.jpg" class="img-fluid hidden-sm float-left" alt="Matt" width="240" height="240">
                     I started seriously programming in college when I found out about a computer science course from a friend.
                     Ever since I've liked the challenge of the inherent puzzle solving of programming. I also like the feeling of a successful
@@ -92,7 +96,7 @@
 
             <div class="innerInfoBlock" id="ProjectSec">
                 <h1 class="title">Projects</h1>
-                <p class="description">Current projects will be posted soon here, but for now check out my
+                <p class="description" id="ProjectDesc">Current projects will be posted soon here, but for now check out my
                     <a href="https://gitlab.com/mleong">GitLab</a>.</p>
             </div>
         </div>

@@ -12,10 +12,40 @@ html, body{
     background-size: cover;
 }
 
+.homeTitle{
+    font-family: 'Song Myung', serif;
+    text-align: center;
+}
+
+.title{
+    font-family: 'Song Myung', serif;
+    text-align: center;
+    position: relative;
+    top: 40%;
+}
+
+.description{
+    font-family: 'Lato', sans-serif;
+    margin: auto;
+    position: relative;
+    top: 50%;
+}
+
+#HomeDesc{
+    text-align: center;
+    position: relative;
+    top: 15%;
+}
+
+#ProjectDesc{
+    text-align: center;
+}
+
+
 ul.nav-pills{
     position: -webkit-sticky;
     position: sticky;
-    top: 0px;
+    top: 25%;
     border: dotted;
 }
 
@@ -32,17 +62,12 @@ ul.nav-pills{
 .innerInfoBlock{
     height: 33.3%;
 }
-.title{
-    text-align: center;
-}
+
 
 #scrollSpy{
     border: dotted;
 }
 
-.description{
-    margin: auto;
-}
 
 #AboutMe{
     margin: auto;
