@@ -61,9 +61,11 @@ a.nav-link{
     color: #E85A4F;
 }
 
-a.nav-link:active{
-    color: #0b2e13;
+.nav-pills > li.nav-item > a.nav-link.active{
+    background-color: #E85A4F;
+    color: #EAE7DC;
 }
+
 
 .infoBlock, .infoRow{
     height: 100%;
