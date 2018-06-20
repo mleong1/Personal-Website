@@ -6,15 +6,22 @@ html, body{
 }
 
 #Home{
-    background-image: url("../images/DeskPlaceholder.jpg");
+    /*background-image: url("../images/DeskPlaceholder.jpg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;*/
+    background-color: white;
 }
+
+#AboutMe{
+    border: dotted;
+}
+
 
 .homeTitle{
     font-family: 'Song Myung', serif;
     text-align: center;
+    color: #E85A4F;
 }
 
 .title{
