@@ -1,12 +1,15 @@
 var width = document.getElementById("Home").clientWidth;
 var height = document.getElementById("Home").clientHeight;
 var canvas = document.getElementById("Home");
+//ctx allows for the drawing of 2d elements on the canvas
 var ctx = canvas.getContext("2d");
 
 canvas.width = width;
 canvas.height = height;
 
-//ctx allows for the drawing of 2d elements on the canvas
+//variables for game pieces
+var character;
+
 function startGame() {
 //text of my name
     ctx.font = "50px Song Myung";
@@ -41,4 +44,39 @@ function startGame() {
     ctx.strokeStyle = "dotted";
     ctx.rect(width / 2 - 135, height / 2 + 125, 670, 30);
     ctx.stroke();
+
+//initialize the sprite starting postition
+    character = new sprite(10, height - 60, 50, 50, "character");
+    character.update();
+}
+
+function sprite(xCor, yCor, w, h, type){
+    this.xCor = xCor;
+    this.yCor = yCor;
+    this.w = w;
+    this.h = h;
+    this.gravity = 0;
+    this.type = type;
+
+    this.newPos = function(){
+
+    }
+    //update method draws the piece
+    this.update = function(){
+        console.log(this.xCor);
+        console.log(this.yCor);
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.rect(this.xCor, this.yCor, this.w, this.h);
+        ctx.stroke();
+    }
+
+}
+
+document.querySelector('body').onkeydown = function (e) {
+    if(e.keyCode == 39){
+        character.xCor += 5;
+        character.update();
+    }
+
 }
