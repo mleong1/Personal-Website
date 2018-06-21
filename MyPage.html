@@ -25,13 +25,14 @@
 
 </head>
 
-<body data-spy="scroll" data-target="#scrollSpy" data-offset="1">
+<body data-spy="scroll" data-target="#scrollSpy" data-offset="1" onload="startGame()">
 
 <!--Lets try using pastel blues and reds -->
 <div class="container-fluid infoBlock">
     <!--Containers and rows bring in bootstraps grid system-->
     <div class="row infoRow">
 
+        <!--When the screen is too small for canvas just display information with white background-->
         <canvas class="col-md-12" id="Home">
             <h1 class="homeTitle">Matthew Leong</h1>
             <p class="description" id="HomeDesc">a programmer from Brooklyn, New York, on a consistent programming grind.<br>
