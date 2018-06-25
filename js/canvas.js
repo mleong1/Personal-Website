@@ -51,6 +51,20 @@ function animate(){
     requestAnimationFrame(animate);
     //clears everything previously in canvas to be redrawn because the character position changes
     ctx.clearRect(0, 0, width, height);
+
+    character.xCor += character.xVel;
+    character.xVel *= 0.9;
+    //gravity
+    character.yCor += character.yVel;
+    character.yVel *= 0.9;
+    if(character.yCor == height - 60){
+        character.jumping = false;
+        character.yCor == height - 60;
+    } else {
+        character.yCor += 1;
+        character.yVel += 0.9;
+    }
+
     character.update();
     goalToken.update();
     platform1.update();
@@ -99,13 +113,13 @@ function sprite(xCor, yCor, w, h){
 document.querySelector('body').onkeydown = function (e) {
     //right direction
     if(e.keyCode == 39){
-        character.xCor += 5;
+        character.xVel += 1;
         if(character.xCor > width){
             character.xCor = -50;
         }
     //left direction
     } else if(e.keyCode == 37){
-        character.xCor -= 5;
+        character.xVel -= 1;
         if(character.xCor < -50){
             character.xCor = width;
         }
@@ -114,7 +128,10 @@ document.querySelector('body').onkeydown = function (e) {
 
     //jumping
     } else if(e.keyCode == 38){
-        character.yCor -= 5;
+        if(!character.jumping){
+            character.yVel -= 20;
+            character.jumping = true;
+        }
     }
 
 
