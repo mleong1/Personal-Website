@@ -55,15 +55,17 @@ function animate(){
     character.xCor += character.xVel;
     character.xVel *= 0.9;
     //gravity
+    character.yVel += 1;
     character.yCor += character.yVel;
     character.yVel *= 0.9;
-    if(character.yCor == height - 60){
+
+
+    if(character.yCor >= height - 60){
         character.jumping = false;
-        character.yCor == height - 60;
-    } else {
-        character.yCor += 1;
-        character.yVel += 0.9;
+        character.yCor = height - 60;
+        character.yVel = 0;
     }
+
 
     character.update();
     goalToken.update();
@@ -111,15 +113,16 @@ function sprite(xCor, yCor, w, h){
 }
 
 document.querySelector('body').onkeydown = function (e) {
+    //Todo look into holding the key down and jump control
     //right direction
     if(e.keyCode == 39){
-        character.xVel += 1;
+        character.xVel += 1.5;
         if(character.xCor > width){
             character.xCor = -50;
         }
     //left direction
     } else if(e.keyCode == 37){
-        character.xVel -= 1;
+        character.xVel -= 1.5;
         if(character.xCor < -50){
             character.xCor = width;
         }
@@ -129,7 +132,8 @@ document.querySelector('body').onkeydown = function (e) {
     //jumping
     } else if(e.keyCode == 38){
         if(!character.jumping){
-            character.yVel -= 20;
+            //controls jump height
+            character.yVel -= 35;
             character.jumping = true;
         }
     }
