@@ -12,9 +12,18 @@ canvas.height = height;
 var character = new sprite(10, height - 60, 50, 50);
 //goalToken is a platform but not really. Should get its own class for when it animates
 var goalToken = new platform(width/2 - 20, 30, 50, 50);
-var platform1;
-var platform2;
-var platform3;
+
+//first platform around my name width/2 -175, height/2-190, 350, 50
+platform1 = new platform(width/2 - 175, height/2 - 190, 350, 50, "plat1");
+//second platform around the desc 1 width/2 - 545, height/2 - 25, 690, 30
+platform2 = new platform(width/2 - 545, height/2 - 25, 690, 30, "plat2");
+//third platform around the desc 2 width/2 - 135, height/2 + 125, 670, 30
+platform3 = new platform(width/2 - 135, height/2 + 125, 670, 30, "plat3");
+
+
+//ground array for platform heights
+var ground = [height - 60, platform3.yCor - 50, platform2.yCor - 50, platform1.yCor - 50];
+var gCounter = 0;
 
 function startGame() {
 //text of my name
@@ -23,24 +32,15 @@ function startGame() {
     ctx.fillStyle = "#E85A4F";
     ctx.fillText("Matthew Leong", width / 2, height / 2 - 150);
 
-//first platform around my name width/2 -175, height/2-190, 350, 50
-    platform1 = new platform(width/2 - 175, height/2 - 190, 350, 50);
-
 //text of desc 1
     ctx.font = "25px Lato";
     ctx.fillStyle = "black";
     ctx.fillText("a programmer from Brooklyn, New York, on a consistent grind.", width / 2 - 200, height / 2);
 
-//second platform around the desc 1 width/2 - 545, height/2 - 25, 690, 30
-    platform2 = new platform(width/2 - 545, height/2 - 25, 690, 30);
-
 //text of desc 2
     ctx.font = "25px Lato";
     ctx.fillStyle = "black";
     ctx.fillText("a learner constantly curious about how and why things work.", width / 2 + 200, height / 2 + 150);
-
-//third platform around the desc 2 width/2 - 135, height/2 + 125, 670, 30
-    platform3 = new platform(width/2 - 135, height/2 + 125, 670, 30);
 
 //initialize the sprite starting postition 10, height - 60, 50, 50
 
@@ -60,12 +60,27 @@ function animate(){
     character.yVel *= 0.9;
 
 
-    if(character.yCor >= height - 60){
+    //ground is height - 60, if character.yCor is greater than that it is going past the floor of height - 10
+    if(character.yCor >= ground[gCounter]){
         character.jumping = false;
-        character.yCor = height - 60;
+        character.yCor = ground[gCounter];
         character.yVel = 0;
     }
 
+    console.log("platform3 xcor " + platform3.xCor);
+    if(character.jumping && character.yCor < platform3.yCor && platform3.inRange(character)) {
+        gCounter ++;
+        character.jumping = false;
+    }
+
+    console.log("This is gcounter " + gCounter);
+
+    if(gCounter > 3){
+        gCounter = 0;
+    }
+    platform1.inRange(character);
+    platform2.inRange(character);
+    platform3.inRange(character);
 
     character.update();
     goalToken.update();
@@ -74,11 +89,12 @@ function animate(){
     platform3.update();
 }
 
-function platform(xCor, yCor, w, h){
+function platform(xCor, yCor, w, h, name){
     this.xCor = xCor;
     this.yCor = yCor;
     this.w = w;
     this.h = h;
+    this.name = name;
 
     this.update = function(){
         ctx.beginPath();
@@ -87,6 +103,11 @@ function platform(xCor, yCor, w, h){
         ctx.stroke();
     }
 
+    this.inRange = function(sprite){
+        if(sprite.collisionPoint >= this.xCor && sprite.collisionPoint <= this.xCor + this.w){
+            return true;
+        }
+    }
 
 
 }
@@ -99,6 +120,8 @@ function sprite(xCor, yCor, w, h){
     this.jumping = true;
     this.xVel = 0;
     this.yVel = 0;
+    //collision point is the middle of the sprite
+    this.collisionPoint = xCor + w/2;
 
     //update method draws the piece
     this.update = function(){
@@ -108,6 +131,7 @@ function sprite(xCor, yCor, w, h){
         ctx.fillStyle = "black";
         ctx.rect(this.xCor, this.yCor, this.w, this.h);
         ctx.stroke();
+        this.collisionPoint = this.xCor + this.w/2;
     }
 
 }
