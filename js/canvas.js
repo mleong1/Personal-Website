@@ -69,9 +69,11 @@ function animate(){
 
     console.log("platform3 xcor " + platform3.xCor);
     if(character.jumping && character.yCor < platform3.yCor && platform3.inRange(character)) {
+        //Todo we need a smoother jump
         gCounter ++;
     }
 
+    //this bit handles the character falling down from platforms
     if(!platform1.inRange(character) && gCounter == 3){
         gCounter --;
     }
@@ -166,6 +168,11 @@ document.querySelector('body').onkeydown = function (e) {
     } else if(e.keyCode == 38){
         if(!character.jumping){
             //controls jump height
+            if(character.xCor > width){
+                character.xCor = -50;
+            } else if (character.xCor < -50){
+                character.xCor = width;
+            }
             character.yVel -= 35;
             character.jumping = true;
         }
