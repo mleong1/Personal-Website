@@ -70,7 +70,16 @@ function animate(){
     console.log("platform3 xcor " + platform3.xCor);
     if(character.jumping && character.yCor < platform3.yCor && platform3.inRange(character)) {
         gCounter ++;
-        character.jumping = false;
+    }
+
+    if(!platform1.inRange(character) && gCounter == 3){
+        gCounter --;
+    }
+    if(!platform2.inRange(character) && gCounter == 2){
+        gCounter --;
+    }
+    if(!platform3.inRange(character) && gCounter == 1){
+        gCounter --;
     }
 
     console.log("This is gcounter " + gCounter);
