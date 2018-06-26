@@ -53,7 +53,7 @@ function animate(){
     ctx.clearRect(0, 0, width, height);
 
     character.xCor += character.xVel;
-    character.xVel *= 0.9;
+    character.xVel *= 0.95;
     //gravity
     character.yVel += 1;
     character.yCor += character.yVel;
@@ -67,11 +67,20 @@ function animate(){
         character.yVel = 0;
     }
 
-    console.log("platform3 xcor " + platform3.xCor);
-    if(character.jumping && character.yCor < platform3.yCor && platform3.inRange(character)) {
+    //+ character.h because we want the character to clear the entire platform and fall naturally on
+    if(character.jumping && character.yCor + character.h < platform3.yCor && platform3.inRange(character)) {
         //Todo we need a smoother jump
         gCounter ++;
+        character.jumping = false;
     }
+
+    if(character.jumping && character.yCor + character.h < platform2.yCor && platform2.inRange(character)) {
+        //Todo we need a smoother jump
+        gCounter ++;
+        character.jumping = false;
+    }
+
+
 
     //this bit handles the character falling down from platforms
     if(!platform1.inRange(character) && gCounter == 3){
@@ -84,11 +93,10 @@ function animate(){
         gCounter --;
     }
 
-    console.log("This is gcounter " + gCounter);
-
     if(gCounter > 3){
-        gCounter = 0;
+        gCounter = 3;
     }
+
     platform1.inRange(character);
     platform2.inRange(character);
     platform3.inRange(character);
@@ -133,6 +141,7 @@ function sprite(xCor, yCor, w, h){
     this.yVel = 0;
     //collision point is the middle of the sprite
     this.collisionPoint = xCor + w/2;
+
 
     //update method draws the piece
     this.update = function(){
