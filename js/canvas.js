@@ -67,22 +67,27 @@ function animate(){
         character.yVel = 0;
     }
 
+    /*These if statements change the ground level based on if the character is in the bounds of the platform
+      and above it*/
     //+ character.h because we want the character to clear the entire platform and fall naturally on
-    if(character.jumping && character.yCor + character.h < platform3.yCor && platform3.inRange(character)) {
-        //Todo we need a smoother jump
+    if(gCounter == 0 && character.yCor + character.h < platform3.yCor && platform3.inRange(character)) {
         gCounter ++;
-        character.jumping = false;
+        character.jumping = true;
     }
 
-    if(character.jumping && character.yCor + character.h < platform2.yCor && platform2.inRange(character)) {
-        //Todo we need a smoother jump
+    if(gCounter == 1 && character.yCor + character.h < platform2.yCor && platform2.inRange(character)) {
         gCounter ++;
-        character.jumping = false;
+        character.jumping = true;
+    }
+
+    if(gCounter == 2 && character.yCor + character.h < platform1.yCor && platform1.inRange(character)) {
+        gCounter ++;
+        character.jumping = true;
     }
 
 
-
-    //this bit handles the character falling down from platforms
+    /*This bit handles the character falling down from platforms. If out of range of the platform the character
+      is on, the character the ground will change to a lower level.*/
     if(!platform1.inRange(character) && gCounter == 3){
         gCounter --;
     }
@@ -93,6 +98,7 @@ function animate(){
         gCounter --;
     }
 
+    //If the character tries to go higher than the number of levels, counter resets to level 3
     if(gCounter > 3){
         gCounter = 3;
     }
