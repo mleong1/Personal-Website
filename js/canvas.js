@@ -4,6 +4,10 @@ var canvas = document.getElementById("Home");
 //ctx allows for the drawing of 2d elements on the canvas
 var ctx = canvas.getContext("2d");
 
+var doAnim = true;
+
+
+
 canvas.width = width;
 canvas.height = height;
 
@@ -33,11 +37,17 @@ function startGame() {
     animate();
 }
 
-function animate(){
-    requestAnimationFrame(animate);
+function animate() {
+    if (doAnim) {
+        requestAnimationFrame(animate);
+    }
     if(goalToken.checkCol(character) < 20){
+        var elem = document.getElementById("AboutMe");
+        elem.scrollIntoView({
+            behavior: "smooth"
+        });
         console.log("should have crashed");
-        return;
+        doAnim = false;
     }
     //clears everything previously in canvas to be redrawn because the character position changes
     ctx.clearRect(0, 0, width, height);
