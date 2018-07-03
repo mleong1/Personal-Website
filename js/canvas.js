@@ -35,6 +35,10 @@ function startGame() {
 
 function animate(){
     requestAnimationFrame(animate);
+    if(goalToken.checkCol(character) < 20){
+        console.log("should have crashed");
+        return;
+    }
     //clears everything previously in canvas to be redrawn because the character position changes
     ctx.clearRect(0, 0, width, height);
 
@@ -117,9 +121,6 @@ function animate(){
     platform3.update();
 
 
-    if(goalToken.checkCol(character) > 60){
-        return;
-    }
 }
 
 function platform(xCor, yCor, w, h, name){
