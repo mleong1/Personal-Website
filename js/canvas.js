@@ -112,10 +112,14 @@ function animate(){
 
     character.update();
     goalToken.update();
-    goalToken.checkCol(character);
     platform1.update();
     platform2.update();
     platform3.update();
+
+
+    if(goalToken.checkCol(character) > 60){
+        return;
+    }
 }
 
 function platform(xCor, yCor, w, h, name){
@@ -187,10 +191,12 @@ function goal(xCor, yCor, w, h){
     }
 
     this.checkCol = function(sprite){
-        if(sprite.yCor - sprite.h/2 >= this.yCor + this.h && sprite.yCor - sprite.h/2 <= this.yCor) {
-                console.log("Made it");
+        var xDis = this.collisionX - sprite.collisionX;
+        var yDis = this.collisionY - sprite.collisionY;
 
-        }
+        //this number represents how close the goal is to the sprite
+        return Math.sqrt(Math.pow(xDis, 2) +
+                Math.pow(yDis, 2))
     }
 }
 
