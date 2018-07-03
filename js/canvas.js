@@ -11,7 +11,7 @@ canvas.height = height;
 //variables for game pieces
 var character = new sprite(10, height - 60, 50, 50);
 //goalToken is a platform but not really. Should get its own class for when it animates
-var goalToken = new platform(width/2 - 20, 30, 50, 50);
+var goalToken = new goal(width/2 - 20, 30, 50, 50);
 
 //first platform around my name width/2 -175, height/2-190, 350, 50
 platform1 = new platform(width/2 - 175, height/2 - 190, 350, 50, "plat1");
@@ -26,22 +26,8 @@ var ground = [height - 60, platform3.yCor - 50, platform2.yCor - 50, platform1.y
 var gCounter = 0;
 
 function startGame() {
-//text of my name
-    ctx.font = "50px Song Myung";
-    ctx.textAlign = "center";
-    ctx.fillStyle = "#E85A4F";
-    ctx.fillText("Matthew Leong", width / 2, height / 2 - 150);
 
-//text of desc 1
-    ctx.font = "25px Lato";
-    ctx.fillStyle = "black";
-    ctx.fillText("a programmer from Brooklyn, New York, on a consistent grind.", width / 2 - 200, height / 2);
-
-//text of desc 2
-    ctx.font = "25px Lato";
-    ctx.fillStyle = "black";
-    ctx.fillText("a learner constantly curious about how and why things work.", width / 2 + 200, height / 2 + 150);
-
+//todo do we need startgame?
 //initialize the sprite starting postition 10, height - 60, 50, 50
 
     animate();
@@ -107,8 +93,26 @@ function animate(){
     platform2.inRange(character);
     platform3.inRange(character);
 
+    //text of my name
+    ctx.font = "50px Song Myung";
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#E85A4F";
+    ctx.fillText("Matthew Leong", width / 2, height / 2 - 150);
+
+    //text of desc 1
+    ctx.font = "25px Lato";
+    ctx.fillStyle = "black";
+    ctx.fillText("a programmer from Brooklyn, New York, on a consistent grind.", width / 2 - 200, height / 2);
+
+    //text of desc 2
+    ctx.font = "25px Lato";
+    ctx.fillStyle = "black";
+    ctx.fillText("a learner constantly curious about how and why things work.", width / 2 + 200, height / 2 + 150);
+
+
     character.update();
     goalToken.update();
+    goalToken.checkCol(character);
     platform1.update();
     platform2.update();
     platform3.update();
@@ -129,7 +133,7 @@ function platform(xCor, yCor, w, h, name){
     }
 
     this.inRange = function(sprite){
-        if(sprite.collisionPoint >= this.xCor && sprite.collisionPoint <= this.xCor + this.w){
+        if(sprite.collisionX >= this.xCor && sprite.collisionX <= this.xCor + this.w){
             return true;
         }
     }
@@ -145,34 +149,62 @@ function sprite(xCor, yCor, w, h){
     this.jumping = true;
     this.xVel = 0;
     this.yVel = 0;
-    //collision point is the middle of the sprite
-    this.collisionPoint = xCor + w/2;
+    //collision point is the middle of the sprite combo of colX and colY
+    //probably could make a point class to house these values
+    this.collisionX = xCor + w/2;
+    this.collisionY = yCor + h/2;
 
 
     //update method draws the piece
     this.update = function(){
-        console.log(this.xCor);
-        console.log(this.yCor);
+        console.log("collision x value " + this.collisionX);
+        console.log("colluision y value " + this.collisionY);
         ctx.beginPath();
         ctx.fillStyle = "black";
         ctx.rect(this.xCor, this.yCor, this.w, this.h);
         ctx.stroke();
-        this.collisionPoint = this.xCor + this.w/2;
+        this.collisionX = this.xCor + this.w/2;
+        this.collisionY = this.yCor + this.h/2;
     }
 
+}
+
+function goal(xCor, yCor, w, h){
+    this.xCor = xCor;
+    this.yCor = yCor;
+    this.w = w;
+    this.h = h;
+    //collision point for the goal sprite
+    this.collisionX = xCor + w/2;
+    this.collisionY = yCor + h/2;
+
+    this.update = function(){
+        ctx.beginPath();
+        ctx.fillStyle = "black";
+        ctx.fillRect(this.xCor, this.yCor, this.w, this.h);
+        ctx.stroke();
+        //no need to update collision point since goal doesn't move
+    }
+
+    this.checkCol = function(sprite){
+        if(sprite.yCor - sprite.h/2 >= this.yCor + this.h && sprite.yCor - sprite.h/2 <= this.yCor) {
+                console.log("Made it");
+
+        }
+    }
 }
 
 document.querySelector('body').onkeydown = function (e) {
     //Todo look into holding the key down and jump control
     //right direction
     if(e.keyCode == 39){
-        character.xVel += 1.5;
+        character.xVel += 2.0;
         if(character.xCor > width){
             character.xCor = -50;
         }
     //left direction
     } else if(e.keyCode == 37){
-        character.xVel -= 1.5;
+        character.xVel -= 2.0;
         if(character.xCor < -50){
             character.xCor = width;
         }
