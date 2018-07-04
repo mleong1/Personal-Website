@@ -189,15 +189,38 @@ function goal(xCor, yCor, w, h){
     this.yCor = yCor;
     this.w = w;
     this.h = h;
+    //var for the line to move mimicking 3d
+    this.lineEnd = 0;
     //collision point for the goal sprite
     this.collisionX = xCor + w/2;
     this.collisionY = yCor + h/2;
 
     this.update = function(){
+        this.lineEnd += 0.1;
+        console.log("line end " + this.lineEnd);
+        if(this.lineEnd > 50){
+            this.lineEnd = 0;
+        }
+
+        ctx.beginPath();
+        ctx.fillStyle = "#F7B733";
+        ctx.moveTo(this.xCor + this.w/2, this.yCor);
+        ctx.lineTo(this.xCor, this.yCor + h);
+        ctx.moveTo(this.xCor + this.w/2, this.yCor);
+        ctx.lineTo(this.xCor + this.w, this.yCor + h);
+        ctx.lineTo(this.xCor, this.yCor + h);
+        ctx.moveTo(this.xCor + this.w/2, this.yCor);
+        ctx.fill();
+        ctx.lineTo(this.xCor + this.lineEnd, this.yCor + h);
+        //now we run a line to the bottom left of the triangle and change the xvalue so it looks like 3d rotation
+
+        ctx.stroke();
+
         ctx.beginPath();
         ctx.fillStyle = "black";
-        ctx.fillRect(this.xCor, this.yCor, this.w, this.h);
+        ctx.rect(this.collisionX - 1, this.collisionY - 1, 1, 1);
         ctx.stroke();
+
         //no need to update collision point since goal doesn't move
     }
 
