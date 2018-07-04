@@ -26,7 +26,7 @@ platform3 = new platform(width/2 - 135, height/2 + 125, 670, 30, "plat3");
 
 
 //ground array for platform heights
-var ground = [height - 60, platform3.yCor - 50, platform2.yCor - 50, platform1.yCor - 50];
+var ground = [height - 65, platform3.yCor - 55, platform2.yCor - 55, platform1.yCor - 55];
 var gCounter = 0;
 
 function startGame() {
@@ -142,8 +142,8 @@ function platform(xCor, yCor, w, h, name){
 
     this.update = function(){
         ctx.beginPath();
-        ctx.strokeStyle = "dotted";
         ctx.rect(this.xCor, this.yCor, this.w, this.h);
+        ctx.strokeStyle = "white";
         ctx.stroke();
     }
 
@@ -175,8 +175,8 @@ function sprite(xCor, yCor, w, h){
         console.log("collision x value " + this.collisionX);
         console.log("colluision y value " + this.collisionY);
         ctx.beginPath();
-        ctx.fillStyle = "black";
         ctx.rect(this.xCor, this.yCor, this.w, this.h);
+        ctx.strokeStyle = "black";
         ctx.stroke();
         this.collisionX = this.xCor + this.w/2;
         this.collisionY = this.yCor + this.h/2;
@@ -203,7 +203,7 @@ function goal(xCor, yCor, w, h){
         }
 
         ctx.beginPath();
-        ctx.fillStyle = "#F7B733";
+        ctx.fillStyle = "#F9CF00";
         ctx.moveTo(this.xCor + this.w/2, this.yCor);
         ctx.lineTo(this.xCor, this.yCor + h);
         ctx.moveTo(this.xCor + this.w/2, this.yCor);
@@ -214,6 +214,7 @@ function goal(xCor, yCor, w, h){
         ctx.lineTo(this.xCor + this.lineEnd, this.yCor + h);
         //now we run a line to the bottom left of the triangle and change the xvalue so it looks like 3d rotation
 
+        ctx.strokeStyle = "#C0B283";
         ctx.stroke();
 
         ctx.beginPath();
