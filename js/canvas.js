@@ -6,6 +6,10 @@ var ctx = canvas.getContext("2d");
 
 var doAnim = true;
 
+//sprite of pixel me
+//todo new bug the pixel me doesn't fall on left side after plat1
+var img = new Image();
+img.src = 'images/testPixelMe.png';
 
 
 canvas.width = width;
@@ -13,7 +17,7 @@ canvas.height = height;
 
 
 //variables for game pieces
-var character = new sprite(10, height - 60, 50, 50);
+var character = new sprite(10, height - 60, 100, 100);
 //goalToken is a platform but not really. Should get its own class for when it animates
 var goalToken = new goal(width/2 - 20, 30, 50, 50);
 
@@ -26,12 +30,15 @@ platform3 = new platform(width/2 - 135, height/2 + 125, 670, 30, "plat3");
 
 
 //ground array for platform heights
-var ground = [height - 65, platform3.yCor - 55, platform2.yCor - 55, platform1.yCor - 55];
+//-5 is a buffer so the character isn't standing directly on top of the words
+var ground = [height - character.h - 5, platform3.yCor - character.h - 5,
+    platform2.yCor - character.h - 5, platform1.yCor - character.h - 5];
 var gCounter = 0;
 
 function startGame() {
 
 //todo do we need startgame?
+//todo clean up code here
 //initialize the sprite starting postition 10, height - 60, 50, 50
 
     animate();
@@ -94,7 +101,10 @@ function animate() {
     if(!platform2.inRange(character) && gCounter == 2){
         gCounter --;
     }
-    if(!platform3.inRange(character) && gCounter == 1){
+    //messy check but necessary to make sure ground is decremented when you're jumping to plat2 from plat3 at the
+    //edge
+    if(!platform3.inRange(character) && gCounter == 1 && !platform2.inRange(character)
+        && !(character.yCor + character.h < platform2.yCor)){
         gCounter --;
     }
 
@@ -129,6 +139,8 @@ function animate() {
     platform1.update();
     platform2.update();
     platform3.update();
+
+
 
 
 }
@@ -173,10 +185,9 @@ function sprite(xCor, yCor, w, h){
     //update method draws the piece
     this.update = function(){
         console.log("collision x value " + this.collisionX);
-        console.log("colluision y value " + this.collisionY);
+        console.log("collision y value " + this.collisionY);
         ctx.beginPath();
-        ctx.rect(this.xCor, this.yCor, this.w, this.h);
-        ctx.strokeStyle = "black";
+        ctx.drawImage(img, this.xCor, this.yCor, this.w, this.h);
         ctx.stroke();
         this.collisionX = this.xCor + this.w/2;
         this.collisionY = this.yCor + this.h/2;
