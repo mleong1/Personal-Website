@@ -8,8 +8,33 @@ var doAnim = true;
 
 //sprite of pixel me
 //todo new bug the pixel me doesn't fall on left side after plat1
-var img = new Image();
-img.src = 'images/testPixelMe.png';
+var idleImg = new Image();
+idleImg.src = 'images/pixelMert.png';
+
+var moveImg1 = new Image();
+moveImg1.src = 'images/pixelMeFolder/pixelMe1.png';
+
+var moveImg2 = new Image();
+moveImg2.src = 'images/pixelMeFolder/pixelMe2.png';
+
+var moveImg3 = new Image();
+moveImg3.src = 'images/pixelMeFolder/pixelMe3.png';
+
+var moveImg4 = new Image();
+moveImg4.src = 'images/pixelMeFolder/pixelMe4.png';
+
+var moveImg5 = new Image();
+moveImg5.src = 'images/pixelMeFolder/pixelMe5.png';
+
+var moveImg6 = new Image();
+moveImg6.src = 'images/pixelMeFolder/pixelMe6.png';
+
+var moveImg7 = new Image();
+moveImg7.src = 'images/pixelMeFolder/pixelMe7.png';
+
+var picArray = [idleImg, moveImg1, moveImg2, moveImg3, moveImg4, moveImg5, moveImg6, moveImg7];
+
+
 
 
 canvas.width = width;
@@ -74,6 +99,14 @@ function animate() {
         character.yVel = 0;
     }
 
+    //need to set these so the character can tell when it's not moving
+    if(character.xVel > 0 && character.xVel < 1){
+        character.xVel = 0;
+    }
+    if(character.xVel < 0 && character.xVel > -1){
+        character.xVel = 0;
+    }
+
     /*These if statements change the ground level based on if the character is in the bounds of the platform
       and above it*/
     //+ character.h because we want the character to clear the entire platform and fall naturally on
@@ -134,6 +167,14 @@ function animate() {
     ctx.fillText("a learner constantly curious about how and why things work.", width / 2 + 200, height / 2 + 150);
 
 
+    console.log("Characters xVel " + character.xVel);
+    console.log("Characters yVel " + character.yVel);
+
+
+    if(character.xVel == 0 && character.yVel == 0){
+        character.moving = false;
+    }
+
     character.update();
     goalToken.update();
     platform1.update();
@@ -174,23 +215,32 @@ function sprite(xCor, yCor, w, h){
     this.w = w;
     this.h = h;
     this.jumping = true;
+    this.moving = false;
     this.xVel = 0;
     this.yVel = 0;
     //collision point is the middle of the sprite combo of colX and colY
     //probably could make a point class to house these values
     this.collisionX = xCor + w/2;
     this.collisionY = yCor + h/2;
+    this.imageCounter = 0;
 
 
     //update method draws the piece
     this.update = function(){
+        if(!character.moving){
+            this.imageCounter = 0;
+        }
+        if(this.imageCounter > 7){
+            this.imageCounter = 1;
+        }
         console.log("collision x value " + this.collisionX);
         console.log("collision y value " + this.collisionY);
         ctx.beginPath();
-        ctx.drawImage(img, this.xCor, this.yCor, this.w, this.h);
+        ctx.drawImage(picArray[this.imageCounter], this.xCor, this.yCor, this.w, this.h);
         ctx.stroke();
         this.collisionX = this.xCor + this.w/2;
         this.collisionY = this.yCor + this.h/2;
+        this.imageCounter ++;
     }
 
 }
@@ -212,6 +262,8 @@ function goal(xCor, yCor, w, h){
         if(this.lineEnd > 50){
             this.lineEnd = 0;
         }
+
+        //todo remove this cool code for a pixel art image 
 
         ctx.beginPath();
         ctx.fillStyle = "#F9CF00";
@@ -246,16 +298,19 @@ function goal(xCor, yCor, w, h){
     }
 }
 
+
 document.querySelector('body').onkeydown = function (e) {
     //Todo look into holding the key down and jump control
     //right direction
     if(e.keyCode == 39){
+        character.moving = true;
         character.xVel += 2.0;
         if(character.xCor > width){
             character.xCor = -50;
         }
     //left direction
     } else if(e.keyCode == 37){
+        character.moving = true;
         character.xVel -= 2.0;
         if(character.xCor < -50){
             character.xCor = width;
@@ -265,6 +320,7 @@ document.querySelector('body').onkeydown = function (e) {
 
     //jumping
     } else if(e.keyCode == 38){
+        character.moving = true;
         if(!character.jumping){
             //controls jump height
             if(character.xCor > width){
