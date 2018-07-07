@@ -145,6 +145,8 @@ function animate() {
     }
     //messy check but necessary to make sure ground is decremented when you're jumping to plat2 from plat3 at the
     //edge
+    //check doesn't guard against someone jumping right after the edge which will decrement gCounter and cause the
+    //jump to plat 2 to miss
     if(!platform3.inRange(character) && gCounter == 1 && !character.jumping){
         gCounter--;
     }
@@ -336,7 +338,7 @@ document.querySelector('body').onkeydown = function (e) {
             } else if (character.xCor < -50){
                 character.xCor = width;
             }
-            character.yVel -= 35;
+            character.yVel -= height/17;
             character.jumping = true;
         }
     }
