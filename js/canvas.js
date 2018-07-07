@@ -32,6 +32,9 @@ moveImg6.src = 'images/pixelMeFolder/pixelMe6.png';
 var moveImg7 = new Image();
 moveImg7.src = 'images/pixelMeFolder/pixelMe7.png';
 
+var jumpImg = new Image();
+jumpImg.src = 'images/pixelMeFolder/pixelMeJump.png';
+
 var picArray = [idleImg, moveImg1, moveImg2, moveImg3, moveImg4, moveImg5, moveImg6, moveImg7];
 
 
@@ -42,7 +45,7 @@ canvas.height = height;
 
 
 //variables for game pieces
-var character = new sprite(10, height - 60, 100, 100);
+var character = new sprite(10, height - 60, 115, 115);
 //goalToken is a platform but not really. Should get its own class for when it animates
 var goalToken = new goal(width/2 - 20, 30, 50, 50);
 
@@ -56,8 +59,8 @@ platform3 = new platform(width/2 - 135, height/2 + 125, 670, 30, "plat3");
 
 //ground array for platform heights
 //-5 is a buffer so the character isn't standing directly on top of the words
-var ground = [height - character.h - 5, platform3.yCor - character.h - 5,
-    platform2.yCor - character.h - 5, platform1.yCor - character.h - 5];
+var ground = [height - character.h, platform3.yCor - character.h,
+    platform2.yCor - character.h, platform1.yCor - character.h];
 var gCounter = 0;
 
 function startGame() {
@@ -107,6 +110,12 @@ function animate() {
         character.xVel = 0;
     }
 
+    //this is why we need to two previous if statements. When xvel and yvel are 0 character isn't moving and
+    //therefore will display it's standing still picture
+    if(character.xVel == 0 && character.yVel == 0){
+        character.moving = false;
+    }
+
     /*These if statements change the ground level based on if the character is in the bounds of the platform
       and above it*/
     //+ character.h because we want the character to clear the entire platform and fall naturally on
@@ -136,9 +145,8 @@ function animate() {
     }
     //messy check but necessary to make sure ground is decremented when you're jumping to plat2 from plat3 at the
     //edge
-    if(!platform3.inRange(character) && gCounter == 1 && !platform2.inRange(character)
-        && !(character.yCor + character.h < platform2.yCor)){
-        gCounter --;
+    if(!platform3.inRange(character) && gCounter == 1 && !character.jumping){
+        gCounter--;
     }
 
     //If the character tries to go higher than the number of levels, counter resets to level 3
@@ -165,15 +173,6 @@ function animate() {
     ctx.font = "25px Lato";
     ctx.fillStyle = "black";
     ctx.fillText("a learner constantly curious about how and why things work.", width / 2 + 200, height / 2 + 150);
-
-
-    console.log("Characters xVel " + character.xVel);
-    console.log("Characters yVel " + character.yVel);
-
-
-    if(character.xVel == 0 && character.yVel == 0){
-        character.moving = false;
-    }
 
     character.update();
     goalToken.update();
@@ -230,17 +229,26 @@ function sprite(xCor, yCor, w, h){
         if(!character.moving){
             this.imageCounter = 0;
         }
-        if(this.imageCounter > 7){
-            this.imageCounter = 1;
+        //counter is double the amount of pictures because we divide the counter by 2 and floor that result
+        //this causes the same animation picture to last for 2 animation frames in canvas
+        if(this.imageCounter > 14){
+            this.imageCounter = 0;
         }
         console.log("collision x value " + this.collisionX);
         console.log("collision y value " + this.collisionY);
         ctx.beginPath();
-        ctx.drawImage(picArray[this.imageCounter], this.xCor, this.yCor, this.w, this.h);
+        if(this.yVel != 0){
+
+            ctx.drawImage(jumpImg, this.xCor, this.yCor, this.w, this.h);
+        } else {
+            ctx.drawImage(picArray[Math.floor(this.imageCounter / 2)], this.xCor, this.yCor, this.w, this.h);
+        }
         ctx.stroke();
         this.collisionX = this.xCor + this.w/2;
         this.collisionY = this.yCor + this.h/2;
+        console.log("image counter " + this.imageCounter);
         this.imageCounter ++;
+
     }
 
 }
@@ -263,7 +271,7 @@ function goal(xCor, yCor, w, h){
             this.lineEnd = 0;
         }
 
-        //todo remove this cool code for a pixel art image 
+        //todo remove this cool code for a pixel art image
 
         ctx.beginPath();
         ctx.fillStyle = "#F9CF00";

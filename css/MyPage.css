@@ -13,8 +13,8 @@ html, body{
     background-color: white;
 }
 
-#AboutMe{
-    border: dotted;
+#AboutMe, #Skills, #Project{
+    height: 33%;
 }
 
 
@@ -53,37 +53,12 @@ html, body{
     text-align: center;
 }
 
-
-ul.nav-pills{
-    position: -webkit-sticky;
-    position: sticky;
-    top: 30%;
-}
-
-.nav-item {
-    font-family: 'Song Myung', serif;
-}
-
-a.nav-link{
-    color: #E85A4F;
-}
-
-.nav-pills > li.nav-item > a.nav-link.active{
-    background-color: #E85A4F;
-    color: #EAE7DC;
-}
-
-
 .infoBlock, .infoRow{
     height: 100%;
 }
 
 #content{
     height: 300%;
-}
-
-.innerInfoBlock{
-    height: 33.3%;
 }
 
 #content{

@@ -25,7 +25,7 @@
 
 </head>
 
-<body data-spy="scroll" data-target="#scrollSpy" data-offset="1" onload="startGame()">
+<body onload="startGame()">
                                                         <!--Instead of canvas click startgame-->
 
 <!--Lets try using pastel blues and reds -->
@@ -50,26 +50,8 @@
 <div class="container-fluid infoBlock" id="content">
     <div class="row infoRow">
 
-        <!--Stacked nav goes here lose the banners-->
-        <nav class="col-md-2 col-3" id="scrollSpy">
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#AboutMe">About Me</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#JavaSec">Skills</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="#Project">Projects</a>
-                </li>
-            </ul>
-        </nav>
-
-        <div class="col-md-10 col-9">
             <!--Image needs to circle but this bootstrap 4-->
-            <div class="innerInfoBlock" id="AboutMe">
+            <div class="col-md-12" id="AboutMe">
                 <!--Lengthy descriptions not resizing right might be fixed with vh and vw -->
                 <h1 class="title">About Me</h1>
 
@@ -83,14 +65,14 @@
                             I started seriously programming in college when I found out about a computer science course from a friend.
                             Ever since I've liked the challenge of the inherent puzzle solving of programming. I also like the feeling of a successful
                             run of something that I wrote myself. I am most interested in the way technology shapes social interaction and in
-                            some cases adds new social interaction. In my free time I run, I play guitar (still learning), and I try to play
-                            Melee with my friends when I can.</p>
+                            some cases adds new social interaction. In my free time I like to play video games, I run, and
+                            I play guitar (still learning).</p>
                     </div>
                 </div>
 
             </div>
 
-            <div class="innerInfoBlock" id="Skills">
+            <div class="col-md-12" id="Skills">
                 <div class="row infoRow">
                     <div class="col-md-4" id="JavaSec">
                         <h1 class="title">Java</h1>
@@ -111,7 +93,7 @@
                 </div>
             </div>
 
-            <div class="innerInfoBlock" id="Project">
+            <div class="col-md-12" id="Project">
                 <h1 class="title">Projects</h1>
                 <p class="description" id="ProjectDesc">Current projects will be posted soon here, but for now check out my
                     <a href="https://gitlab.com/mleong">GitLab</a>.</p>
@@ -119,7 +101,7 @@
         </div>
 
     </div>
-</div>
+
 
 <div class="container-fluid footer">
     <div class="row">
