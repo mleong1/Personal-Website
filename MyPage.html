@@ -50,57 +50,84 @@
 <div class="container-fluid infoBlock" id="content">
     <div class="row infoRow">
 
-            <!--Image needs to circle but this bootstrap 4-->
-            <div class="col-md-12" id="AboutMe">
-                <!--Lengthy descriptions not resizing right might be fixed with vh and vw -->
-                <h1 class="title">About Me</h1>
+        <!--Image needs to circle but this bootstrap 4-->
+        <div class="col-md-12" id="AboutMe">
+            <!--Lengthy descriptions not resizing right might be fixed with vh and vw -->
+            <h1 class="title">About Me</h1>
 
-                <div class="row infoRow">
-                    <div class="col-md-3 imageCol">
-                        <img src="images/matt.jpg" class="rounded-circle float-left" id="MyPic" alt="Matt" width="200" height="200">
-                    </div>
-
-                    <div class="col-md-9">
-                        <p class="description" id="AboutMeDesc">
-                            I started seriously programming in college when I found out about a computer science course from a friend.
-                            Ever since I've liked the challenge of the inherent puzzle solving of programming. I also like the feeling of a successful
-                            run of something that I wrote myself. I am most interested in the way technology shapes social interaction and in
-                            some cases adds new social interaction. In my free time I like to play video games, I run, and
-                            I play guitar (still learning).</p>
-                    </div>
+            <div class="row infoRow">
+                <div class="col-md-3 imageCol">
+                    <img src="images/matt.jpg" class="rounded-circle float-left" id="MyPic" alt="Matt" width="200" height="200">
                 </div>
 
-            </div>
-
-            <div class="col-md-12" id="Skills">
-                <div class="row infoRow">
-                    <div class="col-md-4" id="JavaSec">
-                        <h1 class="title">Java</h1>
-                        <p class="description">5 years of object oriented programming experience. Strong handle of data structures and algorithms.
-                        </p>
-                    </div>
-
-                    <div class="col-md-4" id="WebSec">
-                        <h1 class="title">Web</h1>
-                        <p class="description">1 year of experience with HTML, CSS, and JavaScript. Experienced with Bootstrap and
-                            JQuery.</p>
-                    </div>
-
-                    <div class="col-md-4" id="DatabaseSec">
-                        <h1 class="title">Database</h1>
-                        <p class="description">2 years of database experience particularly in MySQL.</p>
-                    </div>
+                <div class="col-md-9">
+                    <p class="description" id="AboutMeDesc">
+                        I started seriously programming in college when I found out about a computer science course from a friend.
+                        Ever since I've liked the challenge of the inherent puzzle solving of programming. I also like the feeling of a successful
+                        run of something that I wrote myself. I am most interested in the way technology shapes social interaction and in
+                        some cases adds new social interaction. In my free time I like to play video games, I run, and
+                        I play guitar (still learning).</p>
                 </div>
             </div>
 
-            <div class="col-md-12" id="Project">
-                <h1 class="title">Projects</h1>
-                <p class="description" id="ProjectDesc">Current projects will be posted soon here, but for now check out my
-                    <a href="https://gitlab.com/mleong">GitLab</a>.</p>
+        </div>
+
+        <div class="col-md-12" id="Skills">
+            <div class="row infoRow">
+                <div class="col-md-4" id="JavaSec">
+                    <h1 class="title">Java</h1>
+                    <p class="description">5 years of object oriented programming experience. Strong handle of data structures and algorithms.
+                    </p>
+                </div>
+
+                <div class="col-md-4" id="WebSec">
+                    <h1 class="title">Web</h1>
+                    <p class="description">1 year of experience with HTML, CSS, and JavaScript. Experienced with Bootstrap and
+                        JQuery.</p>
+                </div>
+
+                <div class="col-md-4" id="DatabaseSec">
+                    <h1 class="title">Database</h1>
+                    <p class="description">2 years of database experience particularly in MySQL.</p>
+                </div>
             </div>
         </div>
 
+        <div class="col-md-12" id="Project">
+            <div class="carousel slide" id="ProjectCarousel" data-ride="carousel">
+                <ul class="carousel-indicators">
+                    <li data-target="#ProjectCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#ProjectCarousel" data-slide-to="1"></li>
+                </ul>
+
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="images/matt.jpg" alt="Pixelized Me" width="1100" height="500">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="images/testPixelMe.jpg" alt="Me">
+                    </div>
+                </div>
+                
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#ProjectCarousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#ProjectCarousel" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+
+
+        <div class="col-md-12" id="Project2">
+            <h1 class="title">Projects</h1>
+            <p class="description" id="ProjectDesc">Current projects will be posted soon here, but for now check out my
+                <a href="https://gitlab.com/mleong">GitLab</a>.</p>
+        </div>
+
     </div>
+
+</div>
+
 
 
 <div class="container-fluid footer">
