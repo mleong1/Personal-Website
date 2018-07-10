@@ -5,16 +5,13 @@ html, body{
     padding: 0;
 }
 
-#Home{
-    /*background-image: url("../images/DeskPlaceholder.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;*/
-    background-color: white;
-}
 
 #AboutMe, #Skills, #Project{
     height: 33%;
+}
+
+#Project{
+    background-color: #1e7e34;
 }
 
 
@@ -61,8 +58,16 @@ html, body{
     height: 300%;
 }
 
+.carousel-inner img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
 #content{
-    background-color: #EAE7DC;
+
+    background-color: white;
 }
 
 /*Everything pertaining to the footer*/
