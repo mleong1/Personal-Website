@@ -24,20 +24,41 @@
     <link href="https://fonts.googleapis.com/css?family=Lato|Song+Myung" rel="stylesheet">
 
 </head>
-<body>
+<body onload="startGame()">
 
-<div class="container-fluid" id="home">
+<!--This first section holds the game canvas -->
+<div class="container-fluid" id="CanvasDiv">
+    <!--When the screen is too small for canvas just display information with white background-->
+    <canvas class="col-md-12" id = "Home">
+        <!--Maybe put the words in a div in a canvas boxes over the words-->
+    </canvas>
 
+    <script src="js/canvas.js"></script>
 </div>
 
 
 <div class="container-fluid" id="contentBlock">
     <div class="row" id="AboutMeRow">
 
-        <div class="col-md-12" id="myDiv1">
-            <h1>Matthew Leong</h1>
-            <p>Hi, I am Matthew Leong, testing the inner workings of bootstrap and front-end development in
-                general.</p>
+        <div class="col-md-12" id="AboutMe">
+            <!--Lengthy descriptions not resizing right might be fixed with vh and vw -->
+            <h1 class="title">About Me</h1>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <img src="images/matt.jpg" class="rounded-circle float-left" id="MyPic" alt="Matt" width="200" height="200">
+                </div>
+
+                <div class="col-md-9">
+                    <p class="description" id="AboutMeDesc">
+                        I started seriously programming in college when I found out about a computer science course from a friend.
+                        Ever since I've liked the challenge of the inherent puzzle solving of programming. I also like the feeling of a successful
+                        run of something that I wrote myself. I am most interested in the way technology shapes social interaction and in
+                        some cases adds new social interaction. In my free time I like to play video games, I run, and
+                        I play guitar (very much a work in progress).</p>
+                </div>
+            </div>
+
         </div>
 
 
@@ -45,10 +66,25 @@
 
     <div class="row" id="SkillsRow">
 
-        <div class="col-md-12" id="myDiv2">
-            <h1>More Info</h1>
-            <p>This is me practicing to see if I can split the larger contentBlock up into 3 equallysized
-                divs</p>
+        <div class="col-md-12" id="Skills">
+            <div class="row">
+                <div class="col-md-4" id="JavaSec">
+                    <h1 class="title">Java</h1>
+                    <p class="description">5 years of object oriented programming experience. Strong handle of data structures and algorithms.
+                    </p>
+                </div>
+
+                <div class="col-md-4" id="WebSec">
+                    <h1 class="title">Web</h1>
+                    <p class="description">1 year of experience with HTML, CSS, and JavaScript. Experienced with Bootstrap and
+                        JQuery.</p>
+                </div>
+
+                <div class="col-md-4" id="DatabaseSec">
+                    <h1 class="title">Database</h1>
+                    <p class="description">2 years of database experience particularly in MySQL.</p>
+                </div>
+            </div>
         </div>
 
     </div>

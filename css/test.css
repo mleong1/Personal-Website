@@ -6,9 +6,10 @@ body, html{
     padding: 0;
 }
 
-#home{
+#CanvasDiv{
     height: 100%;
     border: dotted;
+    overflow: hidden;
 }
 
 #contentBlock{
@@ -24,14 +25,25 @@ body, html{
 }
 
 
-#myDiv1{
-    border: #ff000f;
-}
-
 h1{
     text-align: center;
 }
 
 p{
+    size: 100px;
     text-align: center;
+}
+
+.carousel-inner img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: dotted;
+    opacity: 0.5;
+}
+
+#footer{
+    height: 80px;
+    border-style: solid;
+    border-color: red;
 }
