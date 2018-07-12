@@ -12,25 +12,26 @@ body, html{
     overflow: hidden;
 }
 
+#Home{
+    height: 100%;
+    width: 100%;
+}
+
 #contentBlock{
     height: 300%;
     border: dotted;
 
 }
 
-.row{
+#AboutMeRow, #SkillsRow, #ProjectRow{
     height: 33.33%;
     border: dotted;
     overflow: hidden;
 }
 
-
-h1{
-    text-align: center;
-}
-
-p{
-    size: 100px;
+.title{
+    color: #E85A4F;
+    font-family: 'Song Myung', serif;
     text-align: center;
 }
 
@@ -42,8 +43,25 @@ p{
     opacity: 0.5;
 }
 
+/*Everything pertaining to the footer and links below*/
+#footerContent{
+
+    text-align: center;
+    letter-spacing: 10px;
+}
+
 #footer{
     height: 80px;
-    border-style: solid;
-    border-color: red;
+    background-color: #8E8D8A;
+    font-size: 45px;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+a:hover{
+    opacity: 0.7;
+    text-decoration: none;
+
 }
