@@ -29,18 +29,27 @@ body, html{
     overflow: hidden;
 }
 
+
 .title{
     color: #E85A4F;
     font-family: 'Song Myung', serif;
     text-align: center;
+    /*Relative placements are messing up my resizing*/
+}
+
+.description{
+    font-family: 'Lato', sans-serif;
+}
+
+#AboutMeInnerRow{
+    position: relative;
+    top: 20%;
 }
 
 .carousel-inner img{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border: dotted;
-    opacity: 0.5;
 }
 
 /*Everything pertaining to the footer and links below*/

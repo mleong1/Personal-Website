@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%; width: 100%">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,12 +12,16 @@
     <link rel="stylesheet" type="text/css" href="css/MainPage.css">
 
 </head>
-<body>
+<body style="height: 100%; width: 100%">
 
-    <div class="container-fluid Home">
-        <h1 class="homeTitle">Matthew Leong</h1>
-        <p1 class="textOne">a programmer from Brooklyn, New York, on a consistent programming grind. A learner constantly curious
-        about how and why things work. </p1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4 AboutMe" style="height: 100%">
+                <h1 class="homeTitle">I am <small>Matthew Leong</small></h1>
+                <p1 class="textOne">a programmer from Brooklyn, New York, on a consistent programming grind. A learner constantly curious
+                about how and why things work. </p1>
+            </div>
+        </div>
     </div>
 
     <div class="container-fluid AboutMe">
@@ -29,7 +33,7 @@
         Melee with my friends when I can.</p1>
     </div>
 
-    <div class="container-fluid Skills">
+    <div class="container-fluid Skills" id="Skills">
         <h1 class="skillsTitle">Programming Experience</h1>
             <div class="SkillsJava">
                 <h3 class="skillsJavaTitle">Java</h3>
@@ -39,10 +43,11 @@
 
             <div class ="SkillsWeb">
                 <h3 class="SkillsWebTitle">Web</h3>
-                <p1>1 year of experience with HTML, CSS, and JavaScript.</p1>
+                <p1>1 year of experience with HTML, CSS, and JavaScript. Experienced with Bootstrap and JQuery.</p1>
             </div>
 
     </div>
+
 
 
     <!-- Optional JavaScript -->

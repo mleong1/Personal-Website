@@ -29,27 +29,25 @@
 <!--Instead of canvas click startgame-->
 
 <!--Lets try using pastel blues and reds -->
-<div class="container-fluid infoBlock">
-    <!--Containers and rows bring in bootstraps grid system-->
-    <div class="row infoRow">
+<div class="container-fluid" id="CanvasDiv">
 
-        <!--<h1 class="homeTitle">Matthew Leong</h1>
-        <p class="description" id="HomeDesc">a programmer from Brooklyn, New York, on a consistent programming grind.<br>
-            A learner constantly curious about how and why things work.</p> -->
-        <!--When the screen is too small for canvas just display information with white background-->
-        <canvas class="col-md-12" id="Home">
-            <!--Maybe put the words in a div in a canvas boxes over the words-->
-        </canvas>
+    <!--<h1 class="homeTitle">Matthew Leong</h1>
+    <p class="description" id="HomeDesc">a programmer from Brooklyn, New York, on a consistent programming grind.<br>
+        A learner constantly curious about how and why things work.</p> -->
+    <!--When the screen is too small for canvas just display information with white background-->
+    <canvas class="col-md-12" id = "Home">
+        <!--Maybe put the words in a div in a canvas boxes over the words-->
+    </canvas>
 
-        <script src="js/canvas.js"></script>
+    <script src="js/canvas.js"></script>
 
 
     </div>
 </div>
 
-<div class="container-fluid infoBlock" id="content">
-    <div class="row infoRow">
-
+<div class="container-fluid" id="contentBlock">
+    <div class="row" id="contentRow">
+        <!--Containers and rows bring in bootstraps grid system-->
         <!--Image needs to circle but this bootstrap 4-->
         <div class="col-md-12" id="AboutMe">
             <!--Lengthy descriptions not resizing right might be fixed with vh and vw -->
@@ -73,7 +71,7 @@
         </div>
 
         <div class="col-md-12" id="Skills">
-            <div class="row infoRow">
+            <div class="row">
                 <div class="col-md-4" id="JavaSec">
                     <h1 class="title">Java</h1>
                     <p class="description">5 years of object oriented programming experience. Strong handle of data structures and algorithms.

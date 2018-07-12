@@ -1,18 +1,33 @@
 html, body{
     position: relative;
     height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
 }
 
+#CanvasDiv{
+    height: 100%;
+    border: dotted;
+}
+
+#ContentBlock{
+    height: 300%;
+    border: dotted;
+}
+
+.row{
+    height: 33%;
+    border-style: solid;
+    border-color: red;
+    overflow: hidden;
+}
 
 #AboutMe, #Skills, #Project{
     height: 33%;
 }
 
-#Project{
-    background-color: #1e7e34;
-}
+
 
 
 .homeTitle{
@@ -62,7 +77,11 @@ html, body{
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
 
+.carousel-control-next-icon ,
+.carousel-control-prev-icon {
+    background-color: red;
 }
 
 #content{
