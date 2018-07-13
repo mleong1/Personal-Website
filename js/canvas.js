@@ -37,7 +37,23 @@ jumpImg.src = 'images/pixelMeFolder/pixelMeJump.png';
 
 var picArray = [idleImg, moveImg1, moveImg2, moveImg3, moveImg4, moveImg5, moveImg6, moveImg7];
 
+//loading the goal sprites
+var goalSpr1 = new Image();
+goalSpr1.src = 'images/goalSprites/goalsprite1.png';
 
+var goalSpr2 = new Image();
+goalSpr2.src = 'images/goalSprites/goalsprite2.png';
+
+var goalSpr3 = new Image();
+goalSpr3.src = 'images/goalSprites/goalsprite3.png';
+
+var goalSpr4 = new Image();
+goalSpr4.src = 'images/goalSprites/goalsprite4.png';
+
+var goalSpr5 = new Image();
+goalSpr5.src = 'images/goalSprites/goalsprite5.png';
+
+var goalArray = [goalSpr1, goalSpr2, goalSpr3, goalSpr4, goalSpr5];
 
 
 canvas.width = width;
@@ -265,18 +281,22 @@ function goal(xCor, yCor, w, h){
     //collision point for the goal sprite
     this.collisionX = xCor + w/2;
     this.collisionY = yCor + h/2;
+    this.imageCounter = 0;
 
     this.update = function(){
-        this.lineEnd += 0.1;
+        /*this.lineEnd += 0.1;
         console.log("line end " + this.lineEnd);
         if(this.lineEnd > 50){
             this.lineEnd = 0;
-        }
+        }*/
 
         //todo remove this cool code for a pixel art image
 
+        if(this.imageCounter > 4){
+            this.imageCounter = 0;
+        }
         ctx.beginPath();
-        ctx.fillStyle = "#F9CF00";
+        /*ctx.fillStyle = "#F9CF00";
         ctx.moveTo(this.xCor + this.w/2, this.yCor);
         ctx.lineTo(this.xCor, this.yCor + h);
         ctx.moveTo(this.xCor + this.w/2, this.yCor);
@@ -288,6 +308,8 @@ function goal(xCor, yCor, w, h){
         //now we run a line to the bottom left of the triangle and change the xvalue so it looks like 3d rotation
 
         ctx.strokeStyle = "#C0B283";
+        ctx.stroke();*/
+        ctx.drawImage(goalArray[this.imageCounter], this.xCor, this.yCor, this.w, this.h);
         ctx.stroke();
 
         ctx.beginPath();
@@ -295,6 +317,7 @@ function goal(xCor, yCor, w, h){
         ctx.rect(this.collisionX - 1, this.collisionY - 1, 1, 1);
         ctx.stroke();
 
+        this.imageCounter ++;
         //no need to update collision point since goal doesn't move
     }
 
