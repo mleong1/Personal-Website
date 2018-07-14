@@ -13,20 +13,30 @@ body, html{
 }
 
 #Home{
-    height: 100%;
-    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 600px;
+    width: 1280px;
+    border: dotted;
 }
 
 #contentBlock{
-    height: 300%;
+
     border: dotted;
 
 }
 
 #AboutMeRow, #SkillsRow, #ProjectRow{
-    height: 33.33%;
     border: dotted;
     overflow: hidden;
+}
+
+#MyPic{
+    padding: 50px;
+}
+#AboutMe{
+    padding: 100px;
 }
 
 
@@ -44,7 +54,6 @@ body, html{
 
 .description{
     font-family: 'Lato', sans-serif;
-    padding: 60px;
     border: dotted;
 }
 
