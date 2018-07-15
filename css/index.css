@@ -86,9 +86,9 @@ body, html{
 }
 
 #footer{
-    height: 80px;
+    height: 60px;
     background-color: #8E8D8A;
-    font-size: 45px;
+    font-size: 35px;
 }
 
 a:link{

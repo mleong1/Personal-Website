@@ -13,33 +13,64 @@ var tutOpacity = 1.0;
 
 //sprite of pixel me
 var idleImg = new Image();
-idleImg.src = 'images/pixelMert.png';
+idleImg.src = 'images/pixelMeFolderRight/pixelMert.png';
 
 var moveImg1 = new Image();
-moveImg1.src = 'images/pixelMeFolder/pixelMe1.png';
+moveImg1.src = 'images/pixelMeFolderRight/pixelMe1.png';
 
 var moveImg2 = new Image();
-moveImg2.src = 'images/pixelMeFolder/pixelMe2.png';
+moveImg2.src = 'images/pixelMeFolderRight/pixelMe2.png';
 
 var moveImg3 = new Image();
-moveImg3.src = 'images/pixelMeFolder/pixelMe3.png';
+moveImg3.src = 'images/pixelMeFolderRight/pixelMe3.png';
 
 var moveImg4 = new Image();
-moveImg4.src = 'images/pixelMeFolder/pixelMe4.png';
+moveImg4.src = 'images/pixelMeFolderRight/pixelMe4.png';
 
 var moveImg5 = new Image();
-moveImg5.src = 'images/pixelMeFolder/pixelMe5.png';
+moveImg5.src = 'images/pixelMeFolderRight/pixelMe5.png';
 
 var moveImg6 = new Image();
-moveImg6.src = 'images/pixelMeFolder/pixelMe6.png';
+moveImg6.src = 'images/pixelMeFolderRight/pixelMe6.png';
 
 var moveImg7 = new Image();
-moveImg7.src = 'images/pixelMeFolder/pixelMe7.png';
+moveImg7.src = 'images/pixelMeFolderRight/pixelMe7.png';
 
 var jumpImg = new Image();
-jumpImg.src = 'images/pixelMeFolder/pixelMeJump.png';
+jumpImg.src = 'images/pixelMeFolderRight/pixelMeJump.png';
 
 var picArray = [idleImg, moveImg1, moveImg2, moveImg3, moveImg4, moveImg5, moveImg6, moveImg7];
+
+//loading the left facing movement pictures
+var idleImgLeft = new Image();
+idleImgLeft.src = 'images/pixelMeFolderLeft/pixelMertLeft.png';
+
+var moveLeftImg1 = new Image();
+moveLeftImg1.src = 'images/pixelMeFolderLeft/pixelMe1Left.png';
+
+var moveLeftImg2 = new Image();
+moveLeftImg2.src = 'images/pixelMeFolderLeft/pixelMe2Left.png';
+
+var moveLeftImg3 = new Image();
+moveLeftImg3.src = 'images/pixelMeFolderLeft/pixelMe3Left.png';
+
+var moveLeftImg4 = new Image();
+moveLeftImg4.src = 'images/pixelMeFolderLeft/pixelMe4Left.png';
+
+var moveLeftImg5 = new Image();
+moveLeftImg5.src = 'images/pixelMeFolderLeft/pixelMe5Left.png';
+
+var moveLeftImg6 = new Image();
+moveLeftImg6.src = 'images/pixelMeFolderLeft/pixelMe6Left.png';
+
+var moveLeftImg7 = new Image();
+moveLeftImg7.src = 'images/pixelMeFolderLeft/pixelMe7Left.png';
+
+var jumpLeftImg = new Image();
+jumpLeftImg.src = 'images/pixelMeFolderLeft/pixelMeJumpLeft.png';
+
+var picLeftArray = [idleImgLeft, moveLeftImg1, moveLeftImg2, moveLeftImg3, moveLeftImg4, moveLeftImg5,
+                    moveLeftImg6, moveLeftImg7];
 
 //loading the goal sprites
 var goalSpr1 = new Image();
@@ -196,11 +227,12 @@ function animate() {
     ctx.fillStyle = "black";
     ctx.fillText("a learner constantly curious about how and why things work.", width / 2 + 200, height / 2 + 150);
 
-    character.update();
-    goalToken.update();
     platform1.update();
     platform2.update();
     platform3.update();
+    //character goes after platforms so the platforms are on the bottom layer and not seen when character jumps
+    character.update();
+    goalToken.update();
 
     //if character has not yet moved provide a graphic that serves as a tutorial of sorts
     if(character.xCor == 10){
@@ -253,6 +285,8 @@ function sprite(xCor, yCor, w, h){
     this.moving = false;
     this.xVel = 0;
     this.yVel = 0;
+    //a true direction means facing right while false means facing left
+    this.direction = true;
     //collision point is the middle of the sprite combo of colX and colY
     //probably could make a point class to house these values
     this.collisionX = xCor + w/2;
@@ -265,21 +299,37 @@ function sprite(xCor, yCor, w, h){
         if(!character.moving){
             this.imageCounter = 0;
         }
+
+        if(character.xVel >= 0){
+            character.direction = true;
+        } else {
+            character.direction = false;
+        }
         //counter is double the amount of pictures because we divide the counter by 2 and floor that result
         //this causes the same animation picture to last for 2 animation frames in canvas
         if(this.imageCounter > 14){
             this.imageCounter = 0;
         }
-        console.log("collision x value " + this.collisionX);
-        console.log("collision y value " + this.collisionY);
-        ctx.beginPath();
-        if(this.yVel != 0){
 
-            ctx.drawImage(jumpImg, this.xCor, this.yCor, this.w, this.h);
+        ctx.beginPath();
+
+        if(character.direction) {
+            if (this.yVel != 0) {
+                ctx.drawImage(jumpImg, this.xCor, this.yCor, this.w, this.h);
+            } else {
+                ctx.drawImage(picArray[Math.floor(this.imageCounter / 2)], this.xCor, this.yCor, this.w, this.h);
+            }
         } else {
-            ctx.drawImage(picArray[Math.floor(this.imageCounter / 2)], this.xCor, this.yCor, this.w, this.h);
+            if(this.yVel != 0) {
+                ctx.drawImage(jumpLeftImg, this.xCor, this.yCor, this.w, this.h);
+            } else {
+                ctx.drawImage(picLeftArray[Math.floor(this.imageCounter / 2)], this.xCor, this.yCor, this.w, this.h);
+            }
         }
+
         ctx.stroke();
+        console.log("xVel " + this.xVel);
+        console.log("direction " + this.direction)
         this.collisionX = this.xCor + this.w/2;
         this.collisionY = this.yCor + this.h/2;
         console.log("image counter " + this.imageCounter);
