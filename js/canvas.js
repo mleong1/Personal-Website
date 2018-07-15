@@ -6,8 +6,12 @@ var ctx = canvas.getContext("2d");
 
 var doAnim = true;
 
+//this is a lazy way to handle the tutorial image that doesn't even get its own class
+var tutImg = new Image();
+tutImg.src = 'images/tutorial.png';
+var tutOpacity = 1.0;
+
 //sprite of pixel me
-//todo new bug the pixel me doesn't fall on left side after plat1
 var idleImg = new Image();
 idleImg.src = 'images/pixelMert.png';
 
@@ -81,7 +85,7 @@ var gCounter = 0;
 
 function startGame() {
 
-//todo do we need startgame?
+//todo do we need startgame? onclick animate() maybe
 //todo clean up code here
 //initialize the sprite starting postition 10, height - 60, 50, 50
 
@@ -198,6 +202,20 @@ function animate() {
     platform2.update();
     platform3.update();
 
+    //if character has not yet moved provide a graphic that serves as a tutorial of sorts
+    if(character.xCor == 10){
+        ctx.save();
+        ctx.globalAlpha = tutOpacity;
+        ctx.drawImage(tutImg, 45, height - 175, 50, 50)
+
+        tutOpacity -= 0.025;
+        console.log("Tutopactiy " + tutOpacity )
+        if(tutOpacity < 0.3){
+            tutOpacity = 1.0;
+        }
+        ctx.restore();
+    }
+
 
 
 
@@ -292,7 +310,7 @@ function goal(xCor, yCor, w, h){
 
         //todo remove this cool code for a pixel art image
 
-        if(this.imageCounter > 4){
+        if(this.imageCounter > 19){
             this.imageCounter = 0;
         }
         ctx.beginPath();
@@ -309,7 +327,9 @@ function goal(xCor, yCor, w, h){
 
         ctx.strokeStyle = "#C0B283";
         ctx.stroke();*/
-        ctx.drawImage(goalArray[this.imageCounter], this.xCor, this.yCor, this.w, this.h);
+
+        //about every 5 frames change the goal image
+        ctx.drawImage(goalArray[Math.floor(this.imageCounter/4)], this.xCor, this.yCor, this.w, this.h);
         ctx.stroke();
 
         ctx.beginPath();
