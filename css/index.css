@@ -36,11 +36,8 @@ body, html{
     overflow: hidden;
 }
 
-#MyPic{
-    padding: 50px;
-}
 #AboutMe{
-    padding: 100px;
+
 }
 
 
@@ -52,9 +49,15 @@ body, html{
 }
 
 #MyPic{
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
 }
+
+.col-md-4{
+    text-align: center;
+}
+
+
 
 .description{
     font-family: 'Lato', sans-serif;
@@ -66,11 +69,8 @@ body, html{
     text-align: center;
 }
 
-#AboutMeInnerRow{
-    position: relative;
-    top: 20%;
-}
 
+/*This css concerns the carousel*/
 .carousel-inner img{
     display: block;
     margin-left: auto;
