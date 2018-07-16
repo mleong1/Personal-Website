@@ -80,7 +80,7 @@ body, html{
 
 .carousel-control-prev{
     /*This gives control over where the button is placed, not the button itself*/
-    position: relative;
+
 }
 
 .carousel-caption{
