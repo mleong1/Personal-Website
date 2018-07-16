@@ -8,7 +8,6 @@ body, html{
 
 #CanvasDiv{
     height: 100%;
-    border: dotted;
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -25,19 +24,23 @@ body, html{
     border-color: black;
 }
 
-#contentBlock{
-
-    border: dotted;
-
-}
 
 #AboutMeRow, #SkillsRow, #ProjectRow{
-    border: dotted;
-    overflow: hidden;
+
 }
 
-#AboutMe{
+#AboutMeRow{
+    padding: 100px;
+}
 
+#Skills{
+    margin-bottom: 100px;
+}
+
+#SkillsRow{
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 50px;
 }
 
 
@@ -57,11 +60,14 @@ body, html{
     text-align: center;
 }
 
+#AboutMeInnerRow{
+    padding: 20px;
+}
 
 
 .description{
     font-family: 'Lato', sans-serif;
-    border: dotted;
+
 }
 
 .projectDescription{
@@ -75,7 +81,6 @@ body, html{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border: dotted;
 }
 
 .carousel-control-prev{
