@@ -78,9 +78,29 @@ body, html{
     border: dotted;
 }
 
+.carousel-control-prev{
+    /*This gives control over where the button is placed, not the button itself*/
+    position: relative;
+}
+
+.carousel-caption{
+    background-color: white ;
+    border-style: solid;
+    border-color: black;
+}
+
+.captionHeader{
+    color: #E85A4F;
+    font-family: 'Song Myung', serif;
+}
+
+.captionDesc{
+    font-family: 'Lato', sans-serif;
+    color: black;
+}
+
 /*Everything pertaining to the footer and links below*/
 #footerContent{
-
     text-align: center;
     letter-spacing: 10px;
 }
